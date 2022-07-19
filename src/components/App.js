@@ -50,32 +50,35 @@ export class App extends Component {
   };
   render() {
     console.log(this.props);
+    console.log(this.state.allData);
     const { Content } = Layout;
     return (
-      <Content style={{ padding: " 24px" }}>
-        {this.state.allData == null ? (
-          <div class="spinner"></div>
-        ) : (
-          <Row gutter={[24, 24]}>
-            {this.state.allData.map((e, i) => (
-              <Col span={6}>
-                <UserCard
-                  key={i}
-                  indexVal={i}
-                  image={`https://avatars.dicebear.com/v2/avataaars/${e.username}.svg?options[mood][]=happy`}
-                  username={e.username}
-                  name={e.name}
-                  phone={e.phone}
-                  email={e.email}
-                  website={e.website}
-                  deleteUser={this.deleteUser}
-                  editUser={this.editUser}
-                />
-              </Col>
-            ))}
-          </Row>
-        )}
-      </Content>
+      <div>
+        <Content style={{ padding: " 24px" }}>
+          {this.state.allData < 9 ? (
+            <div class="spinner"></div>
+          ) : (
+            <Row gutter={[24, 24]}>
+              {this.state.allData.map((e, i) => (
+                <Col span={6}>
+                  <UserCard
+                    key={i}
+                    indexVal={i}
+                    image={`https://avatars.dicebear.com/v2/avataaars/${e.username}.svg?options[mood][]=happy`}
+                    username={e.username}
+                    name={e.name}
+                    phone={e.phone}
+                    email={e.email}
+                    website={e.website}
+                    deleteUser={this.deleteUser}
+                    editUser={this.editUser}
+                  />
+                </Col>
+              ))}
+            </Row>
+          )}
+        </Content>
+      </div>
     );
   }
 }
